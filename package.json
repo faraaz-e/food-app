@@ -1,0 +1,35 @@
+{
+  "name": "food-app",
+  "version": "1.0.0",
+  "description": "A food app in React",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/faraaz-e/food-app.git"
+  },
+  "keywords": [
+    "react",
+    "food",
+    "app"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/faraaz-e/food-app/issues"
+  },
+  "homepage": "https://github.com/faraaz-e/food-app#readme",
+  "devDependencies": {
+    "parcel": "^2.9.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "browserslist": [
+    "cover 99.5%"
+  ]
+}

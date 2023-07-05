@@ -1,3 +1,17 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+/**
+ * Nested elements
+ * 
+ * <div id="parent">
+ *    <div id="child">
+ *      <h1> This is h1 tag </h1>
+ *      <h2> This is h1 tag </h2>
+ *    </div>
+ * </div>
+ * 
+ */
+
 const parent = React.createElement(
   "div",
   { id: "parent" },
