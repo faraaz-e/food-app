@@ -1,75 +1,5 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import logo from "./food-app-logo.png";
+// Restaurant list JSON Object
 
-/**
- * Header
- *  - Logo
- *  - Nav Items
- * Body
- *  - Search
- *  - RestaurantContainer
- *    - RestaurantCard
- *      - Image
- *      - Name of Restaurant, Star rating, cuisine, delivery time
- * Footer
- *  - Copyright
- *  - Links
- *  - Address
- *  - Contact
- */
-
-const Header = () => {
-  return (
-    <div className="header">
-      <div className="logo-container">
-        <img className="logo" src={logo} alt="logo" />
-        <h1>tomato</h1>
-      </div>
-      <div className="nav-items">
-        <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
-          <li>Cart</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
-
-const RestaurantCard = (props) => {
-  const { restData } = props;
-  const {
-    cloudinaryImageId,
-    name,
-    cuisines,
-    avgRating,
-    costForTwo,
-    deliveryTime,
-  } = restData?.data; // destructuring and Optional chaining
-
-  return (
-    <div className="rest-card">
-      <img
-        className="res-logo"
-        src={
-          "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
-          cloudinaryImageId
-        }
-        alt="restaurant-logo"
-      />
-      {/* <h3> {restData.data.name} </h3> */}
-      <h3> {name} </h3>
-      <h4> {cuisines.join(", ")} </h4>
-      <h4> ⭐ {avgRating} </h4>
-      <h5> ₹ {costForTwo / 100} FOR TWO </h5>
-      <h5> {deliveryTime} Mins </h5>
-    </div>
-  );
-};
-
-// Restaurant list JSON object
 const restList = [
   {
     type: "restaurant",
@@ -1625,29 +1555,4 @@ const restList = [
   },
 ];
 
-const Body = () => {
-  return (
-    <div className="body">
-      <div className="search"> Search </div>
-      <div className="rest-container">
-        {restList.map((restaurant) => (
-          <RestaurantCard key={restaurant.data.id} restData={restaurant} />
-        ))}
-        {/* <RestaurantCard restData={restList[1]} /> */}
-      </div>
-    </div>
-  );
-};
-
-const AppLayout = () => {
-  return (
-    <div className="app">
-      <Header />
-      <Body />
-    </div>
-  );
-};
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-
-root.render(<AppLayout />);
+export default restList;

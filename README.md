@@ -14,8 +14,8 @@
 * Creating a _.gitignore_ file to avoid those file to push on github
 * Ignite the app: `npx parcel index.html` - builds the app and provides server (localhost:1234) to run the app
 
-* Remove React CDN links from the project and install React & React DOM 
-    `npm install react`
+* Remove React CDN links from the project and install React & React DOM using 
+    `npm install react` & 
     `npm i react-dom`
 
 > Parcel
@@ -60,6 +60,7 @@
   `const test = React.createElement("h1", {id: "demo"}, "Hello World!")` results an object and not a html element. It converts to HTML element after rendering i.e. `root.render(test)`
 
 > JSX
+  
   It is not HTML in Javascript, it looks like HTML syntax. JSX is basically a combination of HTML & Javascript.
 
 > Babel
@@ -98,5 +99,64 @@ Passing _props_ to a component is just like passing an argument to a function
 
 > Key
 
-_key_ property is passed to the component to identify it uniquely. This is dome so that DOM does not need to re-render all the child nodes after adding a new node on the same level. Key property will help it to just render a new component. Always use keys while looping component.
-Note: React does not recommend using indexes as keys (as per the docs). Indexes can be used as the last option in-case we don't have unique id to pass in key property.
+_key_ property is passed to the component to identify it uniquely. This is done so that DOM does not need to re-render all the child nodes after adding a new node on the same level. _key_ property will help it to just render a new component. Always use _key_ property while looping component.
+Note: React does not recommend using indexes as keys (as per the docs). Indexes can be used as the last option in-case we don't have unique id to pass in _key_ property.
+
+#### Ep - 05 : Let's get hooked
+
+* Restructuring the app with _src_ folder and create a seperate file for each components.
+
+* App Hompage Layout
+
+<!-- /**
+ * Header
+ *  - Logo
+ *  - Nav Items
+ * Body
+ *  - Search
+ *  - RestaurantContainer
+ *    - RestaurantCard
+ *      - Image
+ *      - Name of Restaurant, Star rating, cuisine, delivery time
+ * Footer
+ *  - Copyright
+ *  - Links
+ *  - Address
+ *  - Contact
+ */ -->
+
+ > Types of Export/Import
+
+  * Default export/import
+
+    - To export one variable/component in a file, example;
+        `export default Header;`
+      And import as,
+        `import Header from "./Header";`
+
+  * Named export/import
+
+    - To export more than one variable/component in a file, example;
+        `export const test = "Hello World!";`
+        `export const demo = "Hello React!";`
+      And import as,
+        `import {test, demo} from "./folder.js"`;
+
+> React Hooks
+
+  (Normal JS utility functions)
+  
+  * useState()
+
+    - Also known as State variables
+    - useState(__) takes in a parameter like [] or json data variable as initial data to load/display before effect/changes in DOM.
+    - Whenever a state variable updates/changes, React re-renders the component.
+
+    `const [count, setCount] = useState([])`
+
+> Reconciliation Algorithm
+
+  * React uses Reconciliation Algorithm also known as React Fiber is a technique of finding a difference and updating a DOM.
+  * Virtual DOM is basically a representation of actual DOM. It is just an object representing a UI.
+  * **Diff Algorithm** finds out the difference between the two virtual DOM - previous virtualDOM/object and the updated virtualDOM/object and then update the actual DOM. This is how React becomes fast.
+
