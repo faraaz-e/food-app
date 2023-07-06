@@ -1,46 +1,1653 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-
-// React Element
-// React.createElement (object) => renders => HTMLElement
-
-const heading = React.createElement("h1", { id: "heading" }, "Hello World!");
-console.log(heading); // it is an object not an html element
-
-// JSX (transpiled before it reaches the JS via Parcel - Babel[js compiler - converts jsx to react BTS])
-// JSX => React.createElement => results Object => rendered => HTMLElement
-
-const jsxHeading = (
-  <h1 id="jsxHead" className="customheading">
-    Hello JSX
-  </h1>
-);
-console.log(jsxHeading); // this is an object not an html element
-
-// React Functional Component
-
-const TestComponent = () => {
-  return <h1>Hello Test Functional Component</h1>;
-};
-
-const HeadingComponent = () => (
-  <div id="container">
-    {jsxHeading}
-    {TestComponent()}
-    <TestComponent />
-    <TestComponent></TestComponent>
-    <h1 className="heading"> Hello Functional Component </h1>
-  </div>
-);
+import logo from "./food-app-logo.png";
 
 /**
- * first letter of variable - uppercase
- * { } used to include normal javascript
- * < /> used to include functional components
+ * Header
+ *  - Logo
+ *  - Nav Items
+ * Body
+ *  - Search
+ *  - RestaurantContainer
+ *    - RestaurantCard
+ *      - Image
+ *      - Name of Restaurant, Star rating, cuisine, delivery time
+ * Footer
+ *  - Copyright
+ *  - Links
+ *  - Address
+ *  - Contact
  */
 
+const Header = () => {
+  return (
+    <div className="header">
+      <div className="logo-container">
+        <img className="logo" src={logo} alt="logo" />
+        <h1>tomato</h1>
+      </div>
+      <div className="nav-items">
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>Contact</li>
+          <li>Cart</li>
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+const RestaurantCard = (props) => {
+  const { restData } = props;
+  const {
+    cloudinaryImageId,
+    name,
+    cuisines,
+    avgRating,
+    costForTwo,
+    deliveryTime,
+  } = restData?.data; // destructuring and Optional chaining
+
+  return (
+    <div className="rest-card">
+      <img
+        className="res-logo"
+        src={
+          "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
+          cloudinaryImageId
+        }
+        alt="restaurant-logo"
+      />
+      {/* <h3> {restData.data.name} </h3> */}
+      <h3> {name} </h3>
+      <h4> {cuisines.join(", ")} </h4>
+      <h4> ⭐ {avgRating} </h4>
+      <h5> ₹ {costForTwo / 100} FOR TWO </h5>
+      <h5> {deliveryTime} Mins </h5>
+    </div>
+  );
+};
+
+// Restaurant list JSON object
+const restList = [
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "451919",
+      name: "Cake Centre - The Dessert Maker",
+      uuid: "0e52d034-9ff1-4a23-a922-6d6c314d3f76",
+      city: "5",
+      area: "Chowpatty",
+      totalRatingsString: "100+ ratings",
+      cloudinaryImageId: "umwciwj7vk8xwu0p7myz",
+      cuisines: ["Bakery", "Desserts", "Cafe"],
+      tags: [],
+      costForTwo: 60000,
+      costForTwoString: "₹600 FOR TWO",
+      deliveryTime: 29,
+      minDeliveryTime: 29,
+      maxDeliveryTime: 29,
+      slaString: "29 MINS",
+      lastMileTravel: 2.9000000953674316,
+      slugs: {
+        restaurant: "cake-centre---the-dessert-maker-chowpatty-chowpatty",
+        city: "mumbai",
+      },
+      cityState: "5",
+      address: "79-C, Mohammadi House, Mohammed Ali Road, Mumbai-400 003",
+      locality: "Mohammed Ali Road",
+      parentId: 54802,
+      unserviceable: false,
+      veg: true,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      ribbon: [
+        {
+          type: "PROMOTED",
+        },
+      ],
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3000,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3000,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3000",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID:
+        "cid=7270454~p=1~eid=00000189-2b5a-9946-0049-41bb006d0146~srvts=1688649505094",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "2.9 kms",
+      hasSurge: false,
+      aggregatedDiscountInfoV3: {
+        header: "₹150 OFF",
+        subHeader: "ABOVE ₹599",
+        discountTag: "FLAT DEAL",
+        headerTypeV2: 0,
+      },
+      sla: {
+        restaurantId: "451919",
+        deliveryTime: 29,
+        minDeliveryTime: 29,
+        maxDeliveryTime: 29,
+        lastMileTravel: 2.9000000953674316,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: true,
+      avgRating: "4.0",
+      totalRatings: 100,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "39998",
+      name: "Deliure & The Eatrium",
+      uuid: "8a25abff-3126-4c05-8838-830d86b9671c",
+      city: "5",
+      area: "Byculla",
+      totalRatingsString: "10000+ ratings",
+      cloudinaryImageId: "10ee2905f7f3ff8645bacb3797808a2a",
+      cuisines: ["Desserts", "Bakery", "Snacks", "Chaat"],
+      tags: [],
+      costForTwo: 45000,
+      costForTwoString: "₹450 FOR TWO",
+      deliveryTime: 33,
+      minDeliveryTime: 33,
+      maxDeliveryTime: 33,
+      slaString: "33 MINS",
+      lastMileTravel: 1.2000000476837158,
+      slugs: {
+        restaurant: "dales-edens-clare-road-byculla",
+        city: "mumbai",
+      },
+      cityState: "5",
+      address:
+        "Shop No. A1, A2, A3, Laxmi Building, Near Rolex Hotel, Mirza Galib Marg, Clare Road, Nagpada Junction, Mumbai, Maharashtra 400008",
+      locality: "Byculla",
+      parentId: 70641,
+      unserviceable: false,
+      veg: false,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3000,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3000,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3000",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "1.2 kms",
+      hasSurge: false,
+      aggregatedDiscountInfoV3: {
+        header: "50% OFF",
+        subHeader: "UPTO ₹100",
+        discountTag: "",
+        headerTypeV2: 0,
+      },
+      sla: {
+        restaurantId: "39998",
+        deliveryTime: 33,
+        minDeliveryTime: 33,
+        maxDeliveryTime: 33,
+        lastMileTravel: 1.2000000476837158,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: false,
+      avgRating: "4.4",
+      totalRatings: 10000,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "233329",
+      name: "Burger King",
+      uuid: "407625d2-0ae6-4517-964f-c994d90323cd",
+      city: "5",
+      area: "Byculla",
+      totalRatingsString: "10000+ ratings",
+      cloudinaryImageId: "e33e1d3ba7d6b2bb0d45e1001b731fcf",
+      cuisines: ["Burgers", "American"],
+      tags: [],
+      costForTwo: 35000,
+      costForTwoString: "₹350 FOR TWO",
+      deliveryTime: 27,
+      minDeliveryTime: 27,
+      maxDeliveryTime: 27,
+      slaString: "27 MINS",
+      lastMileTravel: 1.399999976158142,
+      slugs: {
+        restaurant: "burger-king-byculla-byculla",
+        city: "mumbai",
+      },
+      cityState: "5",
+      address:
+        "Byculla restaurant and bakery , bhima sada, 169, Dr. Baba saheb Ambedkar road, Byculla East, Byculla , Mumbai 400027",
+      locality: "Alexander Terrace",
+      parentId: 166,
+      unserviceable: false,
+      veg: false,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3000,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3000,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3000",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "1.3 kms",
+      hasSurge: false,
+      aggregatedDiscountInfoV3: {
+        header: "EVERY ITEM",
+        subHeader: "@ ₹129",
+        discountTag: "",
+        headerTypeV2: 0,
+      },
+      sla: {
+        restaurantId: "233329",
+        deliveryTime: 27,
+        minDeliveryTime: 27,
+        maxDeliveryTime: 27,
+        lastMileTravel: 1.399999976158142,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: false,
+      avgRating: "4.0",
+      totalRatings: 10000,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "636108",
+      name: "Deliciae by Bunty Mahajan",
+      uuid: "c75d9285-cfed-44fb-963d-9b73cfe66acb",
+      city: "5",
+      area: "Chowpatty",
+      totalRatingsString: "500+ ratings",
+      cloudinaryImageId: "94cf9517eb540fed0bfe7e5eaf80c088",
+      cuisines: ["Bakery", "Desserts"],
+      tags: [],
+      costForTwo: 60000,
+      costForTwoString: "₹600 FOR TWO",
+      deliveryTime: 29,
+      minDeliveryTime: 29,
+      maxDeliveryTime: 29,
+      slaString: "29 MINS",
+      lastMileTravel: 3,
+      slugs: {
+        restaurant: "deliciae-by-bunty-mahajan-chowpatty-chowpatty",
+        city: "mumbai",
+      },
+      cityState: "5",
+      address:
+        "33 Rawate Building, Shop No. 2, Ground Floor, Gamdevi Road, Gamdevi, Mumbai 400007",
+      locality: "Gamdevi Road",
+      parentId: 70299,
+      unserviceable: false,
+      veg: false,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      ribbon: [
+        {
+          type: "PROMOTED",
+        },
+      ],
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3600,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3600,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3600",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID:
+        "cid=7352440~p=4~eid=00000189-2b5a-9946-0049-41bc006d0419~srvts=1688649505094",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "3 kms",
+      hasSurge: false,
+      aggregatedDiscountInfoV3: {
+        header: "₹100 OFF",
+        subHeader: "ABOVE ₹499",
+        discountTag: "FLAT DEAL",
+        headerTypeV2: 0,
+      },
+      sla: {
+        restaurantId: "636108",
+        deliveryTime: 29,
+        minDeliveryTime: 29,
+        maxDeliveryTime: 29,
+        lastMileTravel: 3,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: true,
+      avgRating: "4.6",
+      totalRatings: 500,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "683064",
+      name: "Pizza Hut",
+      uuid: "dad77c54-1e45-40f6-8fd0-c865c353cb2a",
+      city: "5",
+      area: "Mahalaxmi Malabar Hill",
+      totalRatingsString: "100+ ratings",
+      cloudinaryImageId: "2b4f62d606d1b2bfba9ba9e5386fabb7",
+      cuisines: ["Pizzas"],
+      tags: [],
+      costForTwo: 35000,
+      costForTwoString: "₹350 FOR TWO",
+      deliveryTime: 35,
+      minDeliveryTime: 35,
+      maxDeliveryTime: 35,
+      slaString: "35 MINS",
+      lastMileTravel: 1,
+      slugs: {
+        restaurant: "pizza-hut-saat-rasta-circle-mahalaxmi-malabar-hill",
+        city: "mumbai",
+      },
+      cityState: "5",
+      address:
+        "Round Building, Bellagio Tower Shop no.3,6,7,8,9,14 Ground, Saat Rasta Circle, Mahalakshmi, Mumbai, Maharashtra 400034",
+      locality: "Saat Rasta Circle",
+      parentId: 721,
+      unserviceable: false,
+      veg: false,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3000,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3000,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3000",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "1 kms",
+      hasSurge: false,
+      sla: {
+        restaurantId: "683064",
+        deliveryTime: 35,
+        minDeliveryTime: 35,
+        maxDeliveryTime: 35,
+        lastMileTravel: 1,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: false,
+      avgRating: "3.5",
+      totalRatings: 100,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "57229",
+      name: "Cafe National",
+      uuid: "5fca5ff1-15be-4541-8673-60bb7feafff5",
+      city: "5",
+      area: "Jacob Circle",
+      totalRatingsString: "10000+ ratings",
+      cloudinaryImageId: "s9w9vd1g2fav1lanykkc",
+      cuisines: ["Indian", "Chinese"],
+      tags: [],
+      costForTwo: 35000,
+      costForTwoString: "₹350 FOR TWO",
+      deliveryTime: 25,
+      minDeliveryTime: 25,
+      maxDeliveryTime: 25,
+      slaString: "25 MINS",
+      lastMileTravel: 0.8999999761581421,
+      slugs: {
+        restaurant: "cafe-national-mahalaxmi-mahalaxmi-malabar-hill",
+        city: "mumbai",
+      },
+      cityState: "5",
+      address: "Mala Building, Jacob Circle, Saat Rasta, Mahalaxmi, Mumbai",
+      locality: "Mahalaxmi",
+      parentId: 53757,
+      unserviceable: false,
+      veg: false,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3000,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3000,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3000",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "0.8 kms",
+      hasSurge: false,
+      aggregatedDiscountInfoV3: {
+        header: "₹150 OFF",
+        subHeader: "ABOVE ₹599",
+        discountTag: "FLAT DEAL",
+        headerTypeV2: 0,
+      },
+      sla: {
+        restaurantId: "57229",
+        deliveryTime: 25,
+        minDeliveryTime: 25,
+        maxDeliveryTime: 25,
+        lastMileTravel: 0.8999999761581421,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: false,
+      avgRating: "4.0",
+      totalRatings: 10000,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "586881",
+      name: "Taco Bell",
+      uuid: "541c3ded-7fc5-4543-ada5-5355c6fb04c2",
+      city: "5",
+      area: "Lower Parel",
+      totalRatingsString: "1000+ ratings",
+      cloudinaryImageId: "e7f40335a66b230f5eda766022dfecbd",
+      cuisines: ["Mexican"],
+      tags: [],
+      costForTwo: 30000,
+      costForTwoString: "₹300 FOR TWO",
+      deliveryTime: 59,
+      minDeliveryTime: 59,
+      maxDeliveryTime: 59,
+      slaString: "59 MINS",
+      lastMileTravel: 3,
+      slugs: {
+        restaurant: "taco-bell-phoenix-palladium-lower-parel-worli",
+        city: "mumbai",
+      },
+      cityState: "5",
+      address:
+        "Taco Bell,Unit No. S 14, Second Floor, Phoenix Palladium, Block No. 2, East Zone, Phoenix Mills Compound, 462, Senapati Bapat Marg, Lower Parel,Mumbai-400013",
+      locality: "Lower Parel",
+      parentId: 1557,
+      unserviceable: false,
+      veg: false,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      ribbon: [
+        {
+          type: "PROMOTED",
+        },
+      ],
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3600,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3600,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3600",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID:
+        "cid=7392366~p=7~eid=00000189-2b5a-9946-0049-41bd006d0778~srvts=1688649505094",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "3 kms",
+      hasSurge: false,
+      aggregatedDiscountInfoV3: {
+        header: "40% OFF",
+        subHeader: "UPTO ₹80",
+        discountTag: "",
+        headerTypeV2: 0,
+      },
+      sla: {
+        restaurantId: "586881",
+        deliveryTime: 59,
+        minDeliveryTime: 59,
+        maxDeliveryTime: 59,
+        lastMileTravel: 3,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: true,
+      avgRating: "3.7",
+      totalRatings: 1000,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "316579",
+      name: "NIC Ice Creams",
+      uuid: "4c6f35e0-300c-498b-b90e-0d490bdce0c3",
+      city: "5",
+      area: "Byculla",
+      totalRatingsString: "1000+ ratings",
+      cloudinaryImageId: "c8b98c4064dc2fd6bdf350212e5f0bd5",
+      cuisines: ["Ice Cream", "Desserts"],
+      tags: [],
+      costForTwo: 12000,
+      costForTwoString: "₹120 FOR TWO",
+      deliveryTime: 16,
+      minDeliveryTime: 16,
+      maxDeliveryTime: 16,
+      slaString: "16 MINS",
+      lastMileTravel: 0.20000000298023224,
+      slugs: {
+        restaurant: "nic-natural-ice-creams-cloud-2-adarsh-nagar",
+        city: "mumbai",
+      },
+      cityState: "5",
+      address:
+        "SHOP NO 03, HANUMAN PRASAD BUILDING PLOT NO 821/823, BAPURAO JAGTAP MARG, JACOB CIRCLE, BYCULLA-400011",
+      locality: "Jacob circle",
+      parentId: 6249,
+      unserviceable: false,
+      veg: true,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3000,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3000,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3000",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "0.2 kms",
+      hasSurge: false,
+      aggregatedDiscountInfoV3: {
+        header: "EVERY ITEM",
+        subHeader: "@ ₹159",
+        discountTag: "",
+        headerTypeV2: 0,
+      },
+      sla: {
+        restaurantId: "316579",
+        deliveryTime: 16,
+        minDeliveryTime: 16,
+        maxDeliveryTime: 16,
+        lastMileTravel: 0.20000000298023224,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: false,
+      avgRating: "4.5",
+      totalRatings: 1000,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "507003",
+      name: "McDonald's",
+      uuid: "dbba8507-37f4-4f00-94d5-fb8b0e841cf2",
+      city: "5",
+      area: "Byculla",
+      totalRatingsString: "1000+ ratings",
+      cloudinaryImageId: "ee5f8e06b300efc07c9fe3f4df40dfc4",
+      cuisines: ["Burgers", "Beverages", "Cafe", "Desserts"],
+      tags: [],
+      costForTwo: 40000,
+      costForTwoString: "₹400 FOR TWO",
+      deliveryTime: 28,
+      minDeliveryTime: 28,
+      maxDeliveryTime: 28,
+      slaString: "28 MINS",
+      lastMileTravel: 1.100000023841858,
+      slugs: {
+        restaurant: "mcdonalds-jacob-circle-bell-mahalaxmi-malabar-hill",
+        city: "mumbai",
+      },
+      cityState: "5",
+      address:
+        "McDonalds Family Restaurants, Bellagio Towers, Ground & First Floor, Shop 6,7,8,8a,97/11,Round Building, Maulana Azad Road, Jacob Circle, Mahalaxmi,Mumbai 400011",
+      locality: "Lower Parel Worli",
+      parentId: 630,
+      unserviceable: false,
+      veg: false,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3000,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3000,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3000",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "1.1 kms",
+      hasSurge: false,
+      sla: {
+        restaurantId: "507003",
+        deliveryTime: 28,
+        minDeliveryTime: 28,
+        maxDeliveryTime: 28,
+        lastMileTravel: 1.100000023841858,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: false,
+      avgRating: "4.1",
+      totalRatings: 1000,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "147053",
+      name: "Cake N Walkerss",
+      uuid: "8425845a-c309-4457-8cbc-89a8a604d687",
+      city: "5",
+      area: "Lower Parel",
+      totalRatingsString: "1000+ ratings",
+      cloudinaryImageId: "afc2059069c5716e0046b4dee25f7d64",
+      cuisines: ["Desserts", "Bakery"],
+      tags: [],
+      costForTwo: 30000,
+      costForTwoString: "₹300 FOR TWO",
+      deliveryTime: 31,
+      minDeliveryTime: 31,
+      maxDeliveryTime: 31,
+      slaString: "31 MINS",
+      lastMileTravel: 2.4000000953674316,
+      slugs: {
+        restaurant: "cake-n-walkerss-near-bawla-masjid-lower-parel-worli",
+        city: "mumbai",
+      },
+      cityState: "5",
+      address:
+        "Cake-n-Walkerss, Shop No. 16, Shivaji Nagar, N.M Joshi Marg, Near Bawla Masjid, Lower Parel, Mumbai",
+      locality: "Lower Parel Worli",
+      parentId: 55017,
+      unserviceable: false,
+      veg: true,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      ribbon: [
+        {
+          type: "PROMOTED",
+        },
+      ],
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3000,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3000,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3000",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID:
+        "cid=7270445~p=10~eid=00000189-2b5a-9946-0049-41be006d0a00~srvts=1688649505094",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "2.4 kms",
+      hasSurge: false,
+      aggregatedDiscountInfoV3: {
+        header: "₹125 OFF",
+        subHeader: "ABOVE ₹599",
+        discountTag: "FLAT DEAL",
+        headerTypeV2: 0,
+      },
+      sla: {
+        restaurantId: "147053",
+        deliveryTime: 31,
+        minDeliveryTime: 31,
+        maxDeliveryTime: 31,
+        lastMileTravel: 2.4000000953674316,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: true,
+      avgRating: "3.7",
+      totalRatings: 1000,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "55694",
+      name: "Al-Baik",
+      uuid: "1ca85d6e-4fa4-479d-9c1d-581fc33c26d3",
+      city: "5",
+      area: "Byculla",
+      totalRatingsString: "5000+ ratings",
+      cloudinaryImageId: "swyugtpsi2zaut9rgzkw",
+      cuisines: ["Snacks", "Beverages"],
+      tags: [],
+      costForTwo: 30000,
+      costForTwoString: "₹300 FOR TWO",
+      deliveryTime: 22,
+      minDeliveryTime: 22,
+      maxDeliveryTime: 22,
+      slaString: "22 MINS",
+      lastMileTravel: 1.7999999523162842,
+      slugs: {
+        restaurant: "al-baik-near-jj-signal-byculla",
+        city: "mumbai",
+      },
+      cityState: "5",
+      address:
+        "Maulana Shaukatali Road, Near JJ Signal, Next to N.U Kitab Ghar, Byculla, Mumbai",
+      locality: "N.U Kitab Ghar, Byculla",
+      parentId: 29746,
+      unserviceable: false,
+      veg: false,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3000,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3000,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3000",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "1.7 kms",
+      hasSurge: false,
+      aggregatedDiscountInfoV3: {
+        header: "40% OFF",
+        subHeader: "UPTO ₹80",
+        discountTag: "",
+        headerTypeV2: 0,
+      },
+      sla: {
+        restaurantId: "55694",
+        deliveryTime: 22,
+        minDeliveryTime: 22,
+        maxDeliveryTime: 22,
+        lastMileTravel: 1.7999999523162842,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: false,
+      avgRating: "3.8",
+      totalRatings: 5000,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "656127",
+      name: "Hotel Suprabhat",
+      uuid: "3064b86d-41d5-418b-8c44-12428cfe4be4",
+      city: "5",
+      area: "Byculla",
+      totalRatingsString: "20+ ratings",
+      cloudinaryImageId: "0bec55ce14a58e76ce6b50ef61ee75d9",
+      cuisines: [
+        "North Indian",
+        "Fast Food",
+        "South Indian",
+        "Chinese",
+        "Beverages",
+        "Street Food",
+      ],
+      tags: [],
+      costForTwo: 40000,
+      costForTwoString: "₹400 FOR TWO",
+      deliveryTime: 31,
+      minDeliveryTime: 31,
+      maxDeliveryTime: 31,
+      slaString: "31 MINS",
+      lastMileTravel: 1.5,
+      slugs: {
+        restaurant: "hotel-suprabhat-lower-parel-worli-lower-parel-worli",
+        city: "mumbai",
+      },
+      cityState: "5",
+      address:
+        "Floor G-113, Kadwani Chambers Seth Motisha Lane, Mazgaon, Mumbai 400010",
+      locality: "Kadwani Chambers",
+      parentId: 478,
+      unserviceable: false,
+      veg: false,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      ribbon: [
+        {
+          type: "PROMOTED",
+        },
+      ],
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3000,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3000,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3000",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID:
+        "cid=7397610~p=13~eid=00000189-2b5a-9946-0049-41bf006d0d7b~srvts=1688649505094",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "1.5 kms",
+      hasSurge: false,
+      sla: {
+        restaurantId: "656127",
+        deliveryTime: 31,
+        minDeliveryTime: 31,
+        maxDeliveryTime: 31,
+        lastMileTravel: 1.5,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: true,
+      avgRating: "4.2",
+      totalRatings: 20,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "381345",
+      name: "Mama Mia!",
+      uuid: "6f36a4e6-f8e7-4a3a-a2bb-dfff45ba0188",
+      city: "5",
+      area: "Byculla",
+      totalRatingsString: "500+ ratings",
+      cloudinaryImageId: "yxtzis9isp3yy1pyz9uo",
+      cuisines: ["Chinese", "Italian", "American"],
+      tags: [],
+      costForTwo: 50000,
+      costForTwoString: "₹500 FOR TWO",
+      deliveryTime: 35,
+      minDeliveryTime: 35,
+      maxDeliveryTime: 35,
+      slaString: "35 MINS",
+      lastMileTravel: 0.699999988079071,
+      slugs: {
+        restaurant: "mamma-mia-byculla-byculla",
+        city: "mumbai",
+      },
+      cityState: "5",
+      address: "21 22 byculla house, clare road, byculla west. Mumbai",
+      locality: "Clare Road",
+      parentId: 131089,
+      unserviceable: false,
+      veg: false,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3000,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3000,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3000",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "0.6 kms",
+      hasSurge: false,
+      aggregatedDiscountInfoV3: {
+        header: "10% OFF",
+        subHeader: "UPTO ₹40",
+        discountTag: "",
+        headerTypeV2: 0,
+      },
+      sla: {
+        restaurantId: "381345",
+        deliveryTime: 35,
+        minDeliveryTime: 35,
+        maxDeliveryTime: 35,
+        lastMileTravel: 0.699999988079071,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: false,
+      avgRating: "4.2",
+      totalRatings: 500,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "474297",
+      name: "Hundo Pizza",
+      uuid: "872a6ae8-24c3-4b41-a965-7abd5239727d",
+      city: "5",
+      area: "Patan Jain Mandal Marg",
+      totalRatingsString: "1000+ ratings",
+      cloudinaryImageId: "dea7176700bf872747979478dad18025",
+      cuisines: ["Italian"],
+      tags: [],
+      costForTwo: 65000,
+      costForTwoString: "₹650 FOR TWO",
+      deliveryTime: 33,
+      minDeliveryTime: 33,
+      maxDeliveryTime: 33,
+      slaString: "33 MINS",
+      lastMileTravel: 4.800000190734863,
+      slugs: {
+        restaurant: "hundo-pizza-chowpatty-chowpatty",
+        city: "mumbai",
+      },
+      cityState: "5",
+      address:
+        "Shop no.3 Swashray Co-op HSG society ltd Patan Jain Mandal Marg, Marine Drive, Mumbai - 400002",
+      locality: "Chowpatty",
+      parentId: 104088,
+      unserviceable: false,
+      veg: false,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      ribbon: [
+        {
+          type: "PROMOTED",
+        },
+      ],
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 4200,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 4200,
+        message: "",
+        title: "Delivery Charge",
+        amount: "4200",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID:
+        "cid=7352366~p=16~eid=00000189-2b5a-9946-0049-41c0006d1002~srvts=1688649505094",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "4.8 kms",
+      hasSurge: false,
+      aggregatedDiscountInfoV3: {
+        header: "60% OFF",
+        subHeader: "UPTO ₹120",
+        discountTag: "",
+        headerTypeV2: 0,
+      },
+      sla: {
+        restaurantId: "474297",
+        deliveryTime: 33,
+        minDeliveryTime: 33,
+        maxDeliveryTime: 33,
+        lastMileTravel: 4.800000190734863,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: true,
+      avgRating: "4.3",
+      totalRatings: 1000,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "550017",
+      name: "Mithiyaj",
+      uuid: "218aa9a4-3198-4bc7-ae18-66a58b8cc17c",
+      city: "5",
+      area: "Byculla",
+      totalRatingsString: "500+ ratings",
+      cloudinaryImageId: "ttz0ju8wofmgc9r4ob1e",
+      cuisines: ["Bakery", "Desserts", "Sweets"],
+      tags: [],
+      costForTwo: 35000,
+      costForTwoString: "₹350 FOR TWO",
+      deliveryTime: 19,
+      minDeliveryTime: 19,
+      maxDeliveryTime: 19,
+      slaString: "19 MINS",
+      lastMileTravel: 0.699999988079071,
+      slugs: {
+        restaurant: "mithiyaj-byculla-byculla-2",
+        city: "mumbai",
+      },
+      cityState: "5",
+      address:
+        "Shop#16/17, Al-Hafiz Manzil, Ready Money Compound, Clare Road,Byculla, Mumbai 400 008",
+      locality: "Ready Money Compound",
+      parentId: 286825,
+      unserviceable: false,
+      veg: false,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3000,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3000,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3000",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "0.6 kms",
+      hasSurge: false,
+      aggregatedDiscountInfoV3: {
+        header: "60% OFF",
+        subHeader: "UPTO ₹120",
+        discountTag: "",
+        headerTypeV2: 0,
+      },
+      sla: {
+        restaurantId: "550017",
+        deliveryTime: 19,
+        minDeliveryTime: 19,
+        maxDeliveryTime: 19,
+        lastMileTravel: 0.699999988079071,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: false,
+      avgRating: "4.5",
+      totalRatings: 500,
+      new: false,
+    },
+    subtype: "basic",
+  },
+];
+
+const Body = () => {
+  return (
+    <div className="body">
+      <div className="search"> Search </div>
+      <div className="rest-container">
+        {restList.map((restaurant) => (
+          <RestaurantCard key={restaurant.data.id} restData={restaurant} />
+        ))}
+        {/* <RestaurantCard restData={restList[1]} /> */}
+      </div>
+    </div>
+  );
+};
+
+const AppLayout = () => {
+  return (
+    <div className="app">
+      <Header />
+      <Body />
+    </div>
+  );
+};
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-// root.render(jsxHeading); // after rendering an object it becomes html element on webpage
 
-root.render(<HeadingComponent />); // way to render functional components (using tags </>)
+root.render(<AppLayout />);

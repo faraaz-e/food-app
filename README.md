@@ -56,6 +56,7 @@
 * After adding the above, now run the app using `npm run start` or `npm start`
 
 > React Element
+
   `const test = React.createElement("h1", {id: "demo"}, "Hello World!")` results an object and not a html element. It converts to HTML element after rendering i.e. `root.render(test)`
 
 > JSX
@@ -84,3 +85,18 @@
   </div>
   ``` 
   To avoid using `<div>...</div>` (which looks inappropriate in html structure) instead, we can use `<React.Fragment>...</React.Fragment>` or an empty tag `<>...</>`
+
+#### Ep - 04 : Talk is cheap, show me the code
+
+* Planning a layout and building an app.
+
+> Props
+
+Passing _props_ to a component is just like passing an argument to a function
+
+* Passing dynamic data (json data) using props
+
+> Key
+
+_key_ property is passed to the component to identify it uniquely. This is dome so that DOM does not need to re-render all the child nodes after adding a new node on the same level. Key property will help it to just render a new component. Always use keys while looping component.
+Note: React does not recommend using indexes as keys (as per the docs). Indexes can be used as the last option in-case we don't have unique id to pass in key property.
