@@ -4,6 +4,8 @@
   "description": "A food app in React",
   "main": "App.js",
   "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
     "test": "jest"
   },
   "repository": {
@@ -15,7 +17,7 @@
     "food",
     "app"
   ],
-  "author": "",
+  "author": "Faraaz E.",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/faraaz-e/food-app/issues"
