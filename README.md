@@ -1,11 +1,15 @@
 # food-app
 
-#### Ep - 01 : Inception
+
+### Ep - 01 : Inception
+---
 
 * Use React CDN links
 * Concept - React.createElement and ReactDOM.render
 
-#### Ep - 02 : Igniting our App
+
+### Ep - 02 : Igniting our App
+---
 
 * Setup github and add/push project on github
 * Type `npm init` to add _package.json_ file
@@ -43,7 +47,9 @@
 * It is package that enables our application to be compatible with the older version of browsers
 * To configure it, add it in package.json (refer the documentation / browserslist.dev)
 
-#### Ep - 03 : Laying the foundation
+
+### Ep - 03 : Laying the foundation
+---
 
 * Adding scripts to _package.json_ to avoid using `npx parcel index.html` to start the server.
   ```JSON
@@ -87,7 +93,9 @@
   ``` 
   To avoid using `<div>...</div>` (which looks inappropriate in html structure) instead, we can use `<React.Fragment>...</React.Fragment>` or an empty tag `<>...</>`
 
-#### Ep - 04 : Talk is cheap, show me the code
+
+### Ep - 04 : Talk is cheap, show me the code
+---
 
 * Planning a layout and building an app.
 
@@ -102,47 +110,48 @@ Passing _props_ to a component is just like passing an argument to a function
 _key_ property is passed to the component to identify it uniquely. This is done so that DOM does not need to re-render all the child nodes after adding a new node on the same level. _key_ property will help it to just render a new component. Always use _key_ property while looping component.
 Note: React does not recommend using indexes as keys (as per the docs). Indexes can be used as the last option in-case we don't have unique id to pass in _key_ property.
 
-#### Ep - 05 : Let's get hooked
 
-* Restructuring the app with _src_ folder and create a seperate file for each components.
+### Ep - 05 : Let's get hooked
+---
+
+* Restructuring the app with folders and create a seperate file for each components.
 
 * App Hompage Layout
 
-<!-- /**
- * Header
- *  - Logo
- *  - Nav Items
- * Body
- *  - Search
- *  - RestaurantContainer
- *    - RestaurantCard
- *      - Image
- *      - Name of Restaurant, Star rating, cuisine, delivery time
- * Footer
- *  - Copyright
- *  - Links
- *  - Address
- *  - Contact
- */ -->
+  * Header
+    - Logo
+    - Nav Items
+  * Body
+    - Search
+    - Filter
+    - RestaurantContainer
+      - RestaurantCard
+        - Image
+        - Name of Restaurant, Star rating, cuisine, delivery time, cost for two
+  * Footer
+    - Copyright
+    - Links
+    - Address
+    - Contact
 
  > Types of Export/Import
 
   * Default export/import
 
-    - To export one variable/component in a file, example;
+    - Used to export one variable/component in a file, example;
         `export default Header;`
       And import as,
         `import Header from "./Header";`
 
   * Named export/import
 
-    - To export more than one variable/component in a file, example;
+    - Used to export more than one variable/component in a file, example;
         `export const test = "Hello World!";`
         `export const demo = "Hello React!";`
       And import as,
         `import {test, demo} from "./folder.js"`;
 
-> React Hooks
+> React Hooks - useState()
 
   (Normal JS utility functions)
   
@@ -160,3 +169,30 @@ Note: React does not recommend using indexes as keys (as per the docs). Indexes 
   * Virtual DOM is basically a representation of actual DOM. It is just an object representing a UI.
   * **Diff Algorithm** finds out the difference between the two virtual DOM - previous virtualDOM/object and the updated virtualDOM/object and then update the actual DOM. This is how React becomes fast.
 
+
+### Ep - 06 : Exploring the world
+---
+
+> Monolithic Architecture
+
+  * It has all different services like Backend/APIs, UI, Auth, DB etc. in a single/same project. Traditionally apps were developed based on this architecture. Example, creating all services in a single tech stack.
+
+> Microservices Architecture
+
+  * Different services like Backend/APIs, UI, Auth, DB etc. are created as different projects. Nowadays, companies are moving towards this architecture. Example, creating different services in different tech stack like UI in React, Backend APIs in Java, SMS services in GoLang etc. These services run on different ports and interact with each other forming a working application.
+
+
+* 2 methods to load the UI data using API
+  
+  -    UI Loads ==>> API (eg. takes 500ms to load) ==>> RENDER UI   (Poor technique)
+  -    UI Loads ==>> RENDER UI ==>> API (eg. takes 500ms to load) ==>> RENDER    (Better UX)
+
+> React Hooks - useEffect()
+
+  * useEffect()
+
+    - useEffect(__) takes in two arguments - a callback function and dependency array.
+    - useEffect's callback function will be called after the component renders.
+    - In simple words, If you need to do something after the component renders, you need to write it inside useEffect.
+
+      `useEffect( ()=>{}, [] )`
