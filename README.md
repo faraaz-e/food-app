@@ -206,3 +206,14 @@ Note: React does not recommend using indexes as keys (as per the docs). Indexes 
 
 * Install 'React Router' using command - `npm i react-router-dom`
 
+* 2 types of Routing
+
+  - Server-side Routing
+
+    When a page is requested, eg. about.html, by clicking on anchor tag, it reloads the whole page and sends a network call to the aboutus.html, fetches the html and renders to the webpage.  
+
+  - Client-side Routing
+
+    Here, we are not making a network call while moving towards a page eg. about section, because all the components are already loaded in to our app when loaded the first time. Hence, fetching a page does not reloads the whole app.
+
+
