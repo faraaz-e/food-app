@@ -1,5 +1,6 @@
 import { useState } from "react";
 import logo from "../../food-app-logo.png";
+import cart from "../../takeaway.png";
 
 const Header = () => {
   // let btnName = "Login";
@@ -16,7 +17,7 @@ const Header = () => {
           <li>Home</li>
           <li>About</li>
           <li>Contact</li>
-          <li>Cart</li>
+          <img className="cart" src={cart} alt="cart" />
           <button
             className="login-btn"
             onClick={() => {

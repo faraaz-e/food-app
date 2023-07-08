@@ -101,7 +101,7 @@
 
 > Props
 
-Passing _props_ to a component is just like passing an argument to a function
+  Passing _props_ to a component is just like passing an argument to a function
 
 * Passing dynamic data (json data) using props
 
@@ -175,11 +175,11 @@ Note: React does not recommend using indexes as keys (as per the docs). Indexes 
 
 > Monolithic Architecture
 
-  * It has all different services like Backend/APIs, UI, Auth, DB etc. in a single/same project. Traditionally apps were developed based on this architecture. Example, creating all services in a single tech stack.
+  It has all different services like Backend/APIs, UI, Auth, DB etc. in a single/same project. Traditionally apps were developed based on this architecture. Example, creating all services in a single tech stack.
 
 > Microservices Architecture
 
-  * Different services like Backend/APIs, UI, Auth, DB etc. are created as different projects. Nowadays, companies are moving towards this architecture. Example, creating different services in different tech stack like UI in React, Backend APIs in Java, SMS services in GoLang etc. These services run on different ports and interact with each other forming a working application.
+  Different services like Backend/APIs, UI, Auth, DB etc. are created as different projects. Nowadays, companies are moving towards this architecture. Example, creating different services in different tech stack like UI in React, Backend APIs in Java, SMS services in GoLang etc. These services run on different ports and interact with each other forming a working application.
 
 
 * 2 methods to load the UI data using API
@@ -193,6 +193,16 @@ Note: React does not recommend using indexes as keys (as per the docs). Indexes 
 
     - useEffect(__) takes in two arguments - a callback function and dependency array.
     - useEffect's callback function will be called after the component renders.
+    - If dependency array [] is not provided (in the second argument), useEffect will be called on every component render.
+    - If empty dependency array is provided, useEffect will be called once on initial render.
+    - If a variable is added inside dependency array, useEffect will be called only when the variable data gets updated/changed.
     - In simple words, If you need to do something after the component renders, you need to write it inside useEffect.
 
       `useEffect( ()=>{}, [] )`
+
+
+### Ep - 07 : Finding the path
+---
+
+* Install 'React Router' using command - `npm i react-router-dom`
+
