@@ -222,6 +222,8 @@ Note: React does not recommend using indexes as keys (as per the docs). Indexes 
 
 * Function-based components is basically a normal javascript function which returns a piece of JSX and Class-based components is a class which has a render method which returns a piece of JSX.
 
+> Class-based Components
+
 * `React.Component` is a class which is given by React and the class component inherits the properties from it.
   
     ```JAVASCRIPT
@@ -239,3 +241,100 @@ Note: React does not recommend using indexes as keys (as per the docs). Indexes 
 
      export default User;
     ```
+
+ * Lifecycle of React Class-based components
+ 
+  - It works in such a way that when class is instantiated or loaded, its works in the following order.
+ 
+    1.  _constructor_ is called first
+    2.  _render_ will be called
+    3.  _componentDidMount() will be called
+
+  - But there are 2 cases in such lifecycle :
+
+    1. If there is one child in the parent class component
+
+        Example;
+
+        ```JAVASCRIPT
+          class About extends Component {
+            constructor(props) {
+              super(props);
+
+              console.log("Parent Constructor");
+            }
+
+            componentDidMount() {
+              console.log("Parent ComponentDidMount");
+            }
+
+            render() {
+              console.log("Parent Render");
+
+              return (
+                <div>
+                  <h1>About</h1>
+                  <h2>This is About page</h2>
+
+                  <UserClass name={"First"} /> /** Child component */
+                </div>
+              );
+            }
+          }
+        ```
+
+
+        This will works in such a way;
+
+
+        ```JAVASCRIPT
+          Parent Constructor
+          Parent Render
+          Child Constructor
+          Child Render
+          Child ComponentDidMount
+          Parent ComponentDidMount
+        ```
+      
+      2. If there are multiple childs in the parent class component
+
+        Example (same as above) ;
+
+        ```JAVASCRIPT
+
+              return (
+                <div>
+                  <h1>About</h1>
+                  <h2>This is About page</h2>
+
+                  <UserClass name={"First"} /> /** First Child component */
+                  <UserClass name={"Second"} /> /** Second Child component */
+                </div>
+              );
+        ```
+
+
+        This will works in such a way;
+
+
+        ```JAVASCRIPT
+          - Parent Constructor
+          - Parent Render
+            - First Child Constructor
+            - First Child Render
+            - Second Child Constructor
+            - Second Child Render
+          - First Child ComponentDidMount
+          - Second Child ComponentDidMount
+          - Parent ComponentDidMount
+        ```
+
+      The reason it works in above way is explained in the below diagram -
+      https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+
+      If we connect the above example withe provided diagram, React actually batches the render phase (constructor + render) of all chld components and later compoentDidMount of all childs. This is done by React for better optimization.
+
+  * `componentDidMount()`
+
+    - It is used in class-based components usually to make API calls. The reason we do this, is because the _componentDidMount_ will be called at last after the mounting/loading of component completes. Just like _useEffect_ in function-based components.
+
