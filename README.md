@@ -242,99 +242,107 @@ Note: React does not recommend using indexes as keys (as per the docs). Indexes 
      export default User;
     ```
 
- * Lifecycle of React Class-based components
- 
-  - It works in such a way that when class is instantiated or loaded, its works in the following order.
- 
-    1.  _constructor_ is called first
-    2.  _render_ will be called
-    3.  _componentDidMount() will be called
+* Lifecycle of React Class-based components
 
-  - But there are 2 cases in such lifecycle :
+- It works in such a way that when class is instantiated or loaded, its works in the following order.
 
-    1. If there is one child in the parent class component
+  1.  _constructor_ is called first
+  2.  _render_ will be called
+  3.  _componentDidMount() will be called
 
-        Example;
+- But there are 2 cases in such lifecycle :
 
-        ```JAVASCRIPT
-          class About extends Component {
-            constructor(props) {
-              super(props);
+  1. If there is one child in the parent class component
 
-              console.log("Parent Constructor");
-            }
+      Example;
 
-            componentDidMount() {
-              console.log("Parent ComponentDidMount");
-            }
+      ```JAVASCRIPT
+        class About extends Component {
+          constructor(props) {
+            super(props);
 
-            render() {
-              console.log("Parent Render");
-
-              return (
-                <div>
-                  <h1>About</h1>
-                  <h2>This is About page</h2>
-
-                  <UserClass name={"First"} /> /** Child component */
-                </div>
-              );
-            }
+            console.log("Parent Constructor");
           }
-        ```
+
+          componentDidMount() {
+            console.log("Parent ComponentDidMount");
+          }
+
+          render() {
+            console.log("Parent Render");
+
+            return (
+              <div>
+                <h1>About</h1>
+                <h2>This is About page</h2>
+
+                <UserClass name={"First"} /> /** Child component */
+              </div>
+            );
+          }
+        }
+      ```
 
 
-        This will works in such a way;
+      This will works in such a way;
 
 
-        ```JAVASCRIPT
-          Parent Constructor
-          Parent Render
-          Child Constructor
-          Child Render
-          Child ComponentDidMount
-          Parent ComponentDidMount
-        ```
-      
-      2. If there are multiple childs in the parent class component
+      ```JAVASCRIPT
+        Parent Constructor
+        Parent Render
+        Child Constructor
+        Child Render
+        Child ComponentDidMount
+        Parent ComponentDidMount
+      ```
+    
+    2. If there are multiple childs in the parent class component
 
-        Example (same as above) ;
+      Example (same as above) ;
 
-        ```JAVASCRIPT
+      ```JAVASCRIPT
+        return (
+          <div>
+            <h1>About</h1>
+            <h2>This is About page</h2>
 
-              return (
-                <div>
-                  <h1>About</h1>
-                  <h2>This is About page</h2>
-
-                  <UserClass name={"First"} /> /** First Child component */
-                  <UserClass name={"Second"} /> /** Second Child component */
-                </div>
-              );
-        ```
-
-
-        This will works in such a way;
+            <UserClass name={"First"} /> /** First Child component */
+            <UserClass name={"Second"} /> /** Second Child component */
+          </div>
+        );
+      ```
 
 
-        ```JAVASCRIPT
-          - Parent Constructor
-          - Parent Render
-            - First Child Constructor
-            - First Child Render
-            - Second Child Constructor
-            - Second Child Render
-          - First Child ComponentDidMount
-          - Second Child ComponentDidMount
-          - Parent ComponentDidMount
-        ```
+      This will works in such a way;
 
-      The reason it works in above way is explained in the below diagram -
-      https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
 
-      If we connect the above example withe provided diagram, React actually batches the render phase (constructor + render) of all chld components and later compoentDidMount of all childs. This is done by React for better optimization.
+      ```JAVASCRIPT
+        Parent Constructor
+        Parent Render
+          First Child Constructor
+          First Child Render
+          Second Child Constructor
+          Second Child Render
+        First Child ComponentDidMount
+        Second Child ComponentDidMount
+        Parent ComponentDidMount
+      ```
 
-  * `componentDidMount()`
+    The reason it works in above way is explained in the below diagram -
+    https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
 
-    - It is used in class-based components usually to make API calls. The reason we do this, is because the _componentDidMount_ will be called at last after the mounting/loading of component completes. Just like _useEffect_ in function-based components.
+    If we connect the above example withe provided diagram, React actually batches the render phase (constructor + render) of all chld components and later compoentDidMount of all childs. This is done by React for better optimization.
+
+* `componentDidMount()`
+
+  - It is used in class-based components usually to make API calls. The reason we do this, is because the _componentDidMount_ will be called at last after the mounting/loading of component completes. Just like _useEffect_ in function-based components.
+
+* `componentDidUpdate()`
+
+  - This is called after the data is updated using _componentDidMount_.
+
+* `componentWillUnmount()`
+
+  - Unmounting means when the component will disappear from UI. It is called after componentDidUpdate.
+
 

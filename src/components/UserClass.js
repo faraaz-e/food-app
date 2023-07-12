@@ -5,44 +5,46 @@ class UserClass extends React.Component {
     super(props);
 
     this.state = {
-      count: 0,
-      count2: 2,
+      userInfo: {
+        first_name: "Demo",
+        last_name: "Test",
+        email: "email@domain.com",
+        avatar: "",
+      },
     };
-
-    console.log("Child Constructor");
+    //console.log("Child Constructor");
   }
 
-  componentDidMount() {
-    console.log("Child ComponentDidMount");
+  async componentDidMount() {
+    // console.log("Parent ComponentDidMount");
+
+    const data = await fetch("https://reqres.in/api/users/5");
+    const userData = await data.json();
+
+    this.setState({
+      userInfo: userData.data,
+    });
+  }
+
+  componentDidUpdate() {
+    console.log("ComponentDidUpdate");
+  }
+
+  componentWilUnmount() {
+    console.log("componentWillUnmount");
   }
 
   render() {
-    const { name, location } = this.props; //destructuring
-    const { count, count2 } = this.state; //destructuring
+    //console.log("Child Render");
 
-    console.log("Child Render");
+    const { first_name, last_name, email, avatar } = this.state.userInfo;
 
     return (
       <div className="user-card">
-        {/* <h1>Count: {this.state.count}</h1> */}
-        <h1>Count: {count}</h1>
-        <button
-          onClick={() => {
-            this.setState({
-              count: this.state.count + 1,
-              count2: this.state.count2 + 1,
-            });
-          }}
-        >
-          Increase Count
-        </button>
-
-        <h1>Count2: {count2}</h1>
-
-        {/* <h2>Name: {this.props.name}</h2> */}
-        <h2>Name: {name}</h2>
-        <h3>Location: {location}</h3>
-        <h4>Contact: email@domain</h4>
+        <img src={avatar} />
+        <h2>First Name: {first_name}</h2>
+        <h2>Last Name: {last_name}</h2>
+        <h3>Email: {email}</h3>
       </div>
     );
   }
