@@ -217,3 +217,25 @@ Note: React does not recommend using indexes as keys (as per the docs). Indexes 
     Here, we are not making a network call while moving towards a page eg. about section, because all the components are already loaded in to our app when loaded the first time. Hence, fetching a page does not reloads the whole app.
 
 
+### Ep - 07 : Let's get Classy
+---
+
+* Function-based components is basically a normal javascript function which returns a piece of JSX and Class-based components is a class which has a render method which returns a piece of JSX.
+
+* `React.Component` is a class which is given by React and the class component inherits the properties from it.
+  
+    ```JAVASCRIPT
+    import React from "react";
+    
+    class User extends React.Component {
+      render() {
+        return (
+          <div>
+          ...
+          </div>
+        );
+      }
+     }
+
+     export default User;
+    ```
