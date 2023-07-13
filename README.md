@@ -297,32 +297,32 @@ Note: React does not recommend using indexes as keys (as per the docs). Indexes 
     
     2. If there are multiple childs in the parent class component
 
-      Example (same as above) ;
+        Example (same as above) ;
 
-      ```HTML
-          <div>
-            <h1>About</h1>
-            <h2>This is About page</h2>
+        ```HTML
+            <div>
+              <h1>About</h1>
+              <h2>This is About page</h2>
 
-            <UserClass name={"First"} /> /** First Child component */
-            <UserClass name={"Second"} /> /** Second Child component */
-          </div>
-      ```
+              <UserClass name={"First"} /> /** First Child component */
+              <UserClass name={"Second"} /> /** Second Child component */
+            </div>
+        ```
 
-      This will works in such a way;
+        This will works in such a way;
 
 
-      ```JAVASCRIPT
-        Parent Constructor
-        Parent Render
-        First Child Constructor
-        First Child Render
-        Second Child Constructor
-        Second Child Render
-        First Child ComponentDidMount
-        Second Child ComponentDidMount
-        Parent ComponentDidMount
-      ```
+        ```JAVASCRIPT
+          Parent Constructor
+          Parent Render
+          First Child Constructor
+          First Child Render
+          Second Child Constructor
+          Second Child Render
+          First Child ComponentDidMount
+          Second Child ComponentDidMount
+          Parent ComponentDidMount
+        ```
 
     The reason it works in above way is explained in the below diagram -
     https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
