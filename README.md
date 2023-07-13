@@ -300,7 +300,7 @@ Note: React does not recommend using indexes as keys (as per the docs). Indexes 
 
       Example (same as above) ;
 
-      ```JAVASCRIPT
+      ```HTML
         return (
           <div>
             <h1>About</h1>
@@ -316,7 +316,7 @@ Note: React does not recommend using indexes as keys (as per the docs). Indexes 
       This will works in such a way;
 
 
-      ```JAVASCRIPT
+      ```
         Parent Constructor
         Parent Render
           First Child Constructor
@@ -346,3 +346,7 @@ Note: React does not recommend using indexes as keys (as per the docs). Indexes 
   - Unmounting means when the component will disappear from UI. It is called after componentDidUpdate.
 
 
+### Ep - 08 : Optimising our App
+---
+
+* Building Custom Hooks
