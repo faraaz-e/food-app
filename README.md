@@ -349,4 +349,9 @@ Note: React does not recommend using indexes as keys (as per the docs). Indexes 
 
 * Building Custom Hooks
 
-* 
+> Chunking / Code Splitting / Dynamic Bundling / Lazing loading / On-demand loading / Dynamic import 
+  
+  - Making smaller bundles
+  - To breakdown the app into smaller logical chunks
+  - Usually all components load on initial load of the page and to avoid the javascript file's size to be larger, such components are lazy loaded which are not immediately required They are loaded when those page/components are clicked. This is called Lazy loading or On-demand loading.
+  - This technique is used to reduce the bundle size and make the app optimized and faster.
