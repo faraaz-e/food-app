@@ -299,7 +299,8 @@ Note: React does not recommend using indexes as keys (as per the docs). Indexes 
 
         Example (same as above) ;
 
-        ```HTML
+        ```JAVASCRIPT
+          return (
             <div>
               <h1>About</h1>
               <h2>This is About page</h2>
@@ -307,6 +308,7 @@ Note: React does not recommend using indexes as keys (as per the docs). Indexes 
               <UserClass name={"First"} /> /** First Child component */
               <UserClass name={"Second"} /> /** Second Child component */
             </div>
+          );
         ```
 
         This will works in such a way;
