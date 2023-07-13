@@ -315,12 +315,12 @@ Note: React does not recommend using indexes as keys (as per the docs). Indexes 
         ```JAVASCRIPT
           Parent Constructor
           Parent Render
-          First Child Constructor
-          First Child Render
-          Second Child Constructor
-          Second Child Render
-          First Child ComponentDidMount
-          Second Child ComponentDidMount
+            First Child Constructor
+            First Child Render
+            Second Child Constructor
+            Second Child Render
+            First Child ComponentDidMount
+            Second Child ComponentDidMount
           Parent ComponentDidMount
         ```
 
