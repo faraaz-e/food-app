@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import restList from "../utils/mockData";
 import Shimmer from "./Shimmer";
@@ -12,13 +12,17 @@ const Body = () => {
 
   const [searchText, setSearchText] = useState("");
 
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
+
+  console.log(restaurantList);
+
   useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.975024&lng=72.82951760000002&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.9690247&lng=72.8205292&page_type=DESKTOP_WEB_LISTING"
     );
 
     const json = await data.json();
@@ -44,17 +48,18 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="feature-container">
-        <div className="search">
+      <div className="feature-container flex">
+        <div className="search m-4 p-4">
           <input
             type="text"
-            className="search-box"
+            className="border border-solid border-black"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
           />
           <button
+            className="px-4 py-2 m-4 bg-green-100 rounded-lg"
             onClick={() => {
               //Filter rest cards update the ui
               console.log(searchText);
@@ -67,9 +72,9 @@ const Body = () => {
             Search
           </button>
         </div>
-        <div className="filter">
+        <div className="filter m-4 p-4 flex items-center">
           <button
-            className="filter-btn"
+            className="px-4 py-2 bg-gray-100"
             onClick={() => {
               const filteredRestaurantList = restaurantList.filter(
                 (rest) => rest.data.avgRating > 4
@@ -81,13 +86,18 @@ const Body = () => {
           </button>
         </div>
       </div>
-      <div className="rest-container">
+      <div className="rest-container flex flex-wrap items-center">
         {filteredRestaurant.map((restaurant) => (
           <Link
             key={"/restaurants/" + restaurant.data.id}
             to={"/restaurants/" + restaurant.data.id}
           >
-            <RestaurantCard restData={restaurant} />
+            {restaurant.data.promoted ? (
+              <RestaurantCardPromoted restData={restaurant} />
+            ) : (
+              <RestaurantCard restData={restaurant} />
+            )}
+            {/* <RestaurantCard restData={restaurant} /> */}
           </Link>
         ))}
         {/* <RestaurantCard restData={restList[1]} /> */}

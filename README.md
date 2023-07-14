@@ -217,7 +217,7 @@ Note: React does not recommend using indexes as keys (as per the docs). Indexes 
     Here, we are not making a network call while moving towards a page eg. about section, because all the components are already loaded in to our app when loaded the first time. Hence, fetching a page does not reloads the whole app.
 
 
-### Ep - 07 : Let's get Classy
+### Ep - 08 : Let's get Classy
 ---
 
 * Function-based components is basically a normal javascript function which returns a piece of JSX and Class-based components is a class which has a render method which returns a piece of JSX.
@@ -344,7 +344,7 @@ Note: React does not recommend using indexes as keys (as per the docs). Indexes 
   - Unmounting means when the component will disappear from UI. It is called after componentDidUpdate.
 
 
-### Ep - 08 : Optimising our App
+### Ep - 09 : Optimising our App
 ---
 
 * Building Custom Hooks
@@ -355,3 +355,18 @@ Note: React does not recommend using indexes as keys (as per the docs). Indexes 
   - To breakdown the app into smaller logical chunks
   - Usually all components load on initial load of the page and to avoid the javascript file's size to be larger, such components are lazy loaded which are not immediately required They are loaded when those page/components are clicked. This is called Lazy loading or On-demand loading.
   - This technique is used to reduce the bundle size and make the app optimized and faster.
+
+
+### Ep - 10 : Jo dikhta hai, vo bikta hai
+---
+
+* Using Tailwind CSS
+
+
+### Ep - 10 : Data is the new Oil
+---
+
+> Higher Order Components
+
+  - Higher Order Component is a function that takes a component and returns a component. 
+  - It takes an existing and enhances or modifies it and returns it back.
