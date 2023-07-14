@@ -40,7 +40,27 @@ const Body = () => {
 
   if (onlineStatus === false) {
     return (
-      <h1>Looks like you're offline! Please check your internet connection.</h1>
+      <div className="flex justify-center m-5">
+        <div className="px-4">
+          <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M8.288 15.038a5.25 5.25 0 017.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 011.06 0z"
+              />
+            </svg>
+        </div>
+        <h1>
+          Looks like you're offline! Please check your internet connection
+        </h1>
+      </div>
     );
   }
 
@@ -48,18 +68,22 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="feature-container flex">
-        <div className="search m-4 p-4">
+      <div className="feature-container flex flex-wrap space-x-60 items-center border-b-2 mx-3">
+        <div className="text-2xl font-bold text-gray-700 px-4">
+          {restaurantList.length} restaurants
+        </div>
+        <div className="search">
           <input
             type="text"
-            className="border border-solid border-black"
+            className="h-8 w-80 p-4 border border-solid shadow-md rounded-lg"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
+            placeholder="Search your favourite restaurant ..."
           />
           <button
-            className="px-4 py-2 m-4 bg-green-100 rounded-lg"
+            className="p-4 m-1"
             onClick={() => {
               //Filter rest cards update the ui
               console.log(searchText);
@@ -69,12 +93,25 @@ const Body = () => {
               setFilteredRestaurant(filteredRes);
             }}
           >
-            Search
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="w-4 h-4"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+              />
+            </svg>
           </button>
         </div>
         <div className="filter m-4 p-4 flex items-center">
           <button
-            className="px-4 py-2 bg-gray-100"
+            className="px-4 py-2 font-light text-sm"
             onClick={() => {
               const filteredRestaurantList = restaurantList.filter(
                 (rest) => rest.data.avgRating > 4

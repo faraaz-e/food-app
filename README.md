@@ -363,8 +363,9 @@ Note: React does not recommend using indexes as keys (as per the docs). Indexes 
 * Using Tailwind CSS
 
 
-### Ep - 10 : Data is the new Oil
+### Ep - 11 : Data is the new Oil
 ---
+
 
 > Higher Order Components
 

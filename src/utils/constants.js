@@ -3,4 +3,4 @@ export const CDN_URL =
 
 export const LOGO_URL = "";
 
-export const MENU_API = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.975024&lng=72.82951760000002&restaurantId=";
+export const MENU_API = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.9690247&lng=72.8205292&restaurantId=";
