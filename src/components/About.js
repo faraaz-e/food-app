@@ -1,6 +1,7 @@
 import User from "./User";
 import UserClass from "./UserClass";
 import { Component } from "react";
+import UserContext from "../utils/UserContext";
 
 class About extends Component {
   constructor(props) {
@@ -16,8 +17,8 @@ class About extends Component {
     const userData = await data.json();
 
     this.setState({
-        userInfo: userData.data
-    })
+      userInfo: userData.data,
+    });
   }
 
   render() {
@@ -27,6 +28,12 @@ class About extends Component {
       <div>
         <h1>About</h1>
         <h2>This is About page</h2>
+        <div>
+          LoggedIn User :
+          <UserContext.Consumer>
+            {({loggedInUser}) => <h1>{loggedInUser}</h1>}
+          </UserContext.Consumer>
+        </div>
 
         <UserClass name={"Bob"} location={"Mumbai"} />
       </div>

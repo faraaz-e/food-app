@@ -21,7 +21,7 @@ const RestaurantCard = (props) => {
         alt="restaurant-logo"
       />
       {/* <h3> {restData.data.name} </h3> */}
-      <h3 className="font-bold py-2 text-lg"> {name} </h3>
+      <h3 className="font-medium py-2 text-lg"> {name} </h3>
       <h5 className="font-extralight text-sm"> {cuisines.join(", ")} </h5>
       <h5 className="py-4 flex space-x-2 items-center">
         <div className="bg-green-600">

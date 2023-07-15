@@ -366,7 +366,6 @@ Note: React does not recommend using indexes as keys (as per the docs). Indexes 
 ### Ep - 11 : Data is the new Oil
 ---
 
-
 > Higher Order Components
 
   - Higher Order Component is a function that takes a component and returns a component. 
@@ -375,3 +374,9 @@ Note: React does not recommend using indexes as keys (as per the docs). Indexes 
 * Controlled and Uncontrolled Components
 
 * Lifting State up
+
+> Props Drilling
+
+  - Passing data from a parent component down to its child component and then those children passes the same data down to its own children.
+
+  * React Context : It is kind of global place where data is kept and it can accessed anywhere.
