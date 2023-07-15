@@ -371,3 +371,7 @@ Note: React does not recommend using indexes as keys (as per the docs). Indexes 
 
   - Higher Order Component is a function that takes a component and returns a component. 
   - It takes an existing and enhances or modifies it and returns it back.
+
+* Controlled and Uncontrolled Components
+
+* Lifting State up
