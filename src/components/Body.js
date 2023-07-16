@@ -123,6 +123,9 @@ const Body = () => {
           </button>
         </div>
       </div>
+      <div>
+        <h3 className="text-xs font-light text-center p-2">Disclaimer: This food app is for education purpose only.</h3>
+      </div>
       <div className="rest-container flex flex-wrap items-center">
         {filteredRestaurant.map((restaurant) => (
           <Link
