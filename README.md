@@ -419,3 +419,4 @@ But you also need to display it on the cart, i.e. get data or _read_ data from t
 * Configure babel.config.js
 * Configure [parcel config file to disable default babel transpilation](https://parceljs.org/languages/javascript/#usage-with-other-tools)
 * Jest configuration - `npx jest --init`
+* Install [jsDOM library](https://testing-library.com/docs/react-testing-library/setup#jest-28) - `npm install --save-dev jest-environment-jsdom`
