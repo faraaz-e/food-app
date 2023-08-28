@@ -11,6 +11,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 
 const Grocery = lazy(() => import("./components/Grocery")); // lazy loading / On-demand loading
 const About = lazy(() => import("./components/About")); // lazy loading / On-demand loading
@@ -63,6 +64,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurants/:restId",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />
       },
       {
         path: "/grocery",
