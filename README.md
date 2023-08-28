@@ -396,11 +396,25 @@ But you also need to display it on the cart, i.e. get data or _read_ data from t
 
 > Redux Toolkit
 
-  1. ```npm install @reduxjs/toolkit``` and ```npm install react-redux```
+  1. `npm install @reduxjs/toolkit` and `npm install react-redux`
   2. Build our store
   3. Connect our store to our app
   4. Create a Slice (cart slice)
   5. Dispatch an action
   6. Selector
 
-> 
+
+### Ep - 13 : Time for the test
+---
+
+* Types of Testing (that Developers do)
+
+  1. Unit testing - Testing one/single component in isolation
+  2. Integration testing - Testing multiple components that are interacting with each other
+  3. End to End testing (E2E testing) - Testing the application from user lands till the user leaves the app
+
+* Install [React testing library](https://testing-library.com/docs/react-testing-library/intro/) - `npm install -D @testing/react`
+* Install [Jest](https://jestjs.io/docs/getting-started) - `npm i -D jest`
+* Install Babel dependencies - `npm install --save-dev babel-jest @babel/core @babel/preset-env`
+* Configure babel.config.js
+* Configure [parcel config file to disable default babel transpilation](https://parceljs.org/languages/javascript/#usage-with-other-tools)
