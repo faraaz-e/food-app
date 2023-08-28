@@ -34,7 +34,7 @@ const Header = () => {
           <li className="px-4">
             <Link to="/grocery">Grocery</Link>
           </li>
-          <img className="cart w-8" src={cart} alt="cart" />
+          <li className="px-4">Cart</li>
           <button
             className="login-btn px-4 pb-2"
             onClick={() => {
