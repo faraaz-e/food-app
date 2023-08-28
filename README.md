@@ -380,3 +380,27 @@ Note: React does not recommend using indexes as keys (as per the docs). Indexes 
   - Passing data from a parent component down to its child component and then those children passes the same data down to its own children.
 
   * React Context : It is kind of global place where data is kept and it can accessed anywhere.
+
+
+### Ep - 12 : Let's build our store
+---
+
+* **Redux** is primarly used for handling state of an application.
+* It acts as a centralized store.
+* This centralized store has slices each indicating a specific functionality i.e. cart, user etc.
+
+Example: Consider a Cart functionality in a food app, you cannot modify the cart directly on 'Add to cart' button click this process actually works in such a way that when you click on the 'Add to Cart' button, it _dispatches_ an action which call the **Reducer** function which results in updating the slice of our redux store. This helps you to _write_ data to the cart. 
+But you also need to display it on the cart, i.e. get data or _read_ data from the redux store and display it to your cart, so here we will use a **Selector** to read he data from the store. This selector phenomena is known as 'subscribing to the store'. It actually syncs with the store so whenever you update the redux store it auto-updates the cart.
+
+'Add to cart' btn => dispatches (action) =>  Calls Reducer fn() => Updates the store => Selector (subscribed to store) =>  Updates the cart
+
+> Redux Toolkit
+
+  1. ```npm install @reduxjs/toolkit``` and ```npm install react-redux```
+  2. Build our store
+  3. Connect our store to our app
+  4. Create a Slice (cart slice)
+  5. Dispatch an action
+  6. Selector
+
+> 
