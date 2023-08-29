@@ -411,12 +411,17 @@ But you also need to display it on the cart, i.e. get data or _read_ data from t
 
   1. Unit testing - Testing one/single component in isolation
   2. Integration testing - Testing multiple components that are interacting with each other
-  3. End to End testing (E2E testing) - Testing the application from user lands till the user leaves the app
+  3. End to End testing (E2E testing) - Testing the application, starting from, when user lands on app till the user leaves the app
 
-* Install [React testing library](https://testing-library.com/docs/react-testing-library/intro/) - `npm install -D @testing/react`
-* Install [Jest](https://jestjs.io/docs/getting-started) - `npm i -D jest`
-* Install Babel dependencies - `npm install --save-dev babel-jest @babel/core @babel/preset-env`
-* Configure babel.config.js
-* Configure [parcel config file to disable default babel transpilation](https://parceljs.org/languages/javascript/#usage-with-other-tools)
-* Jest configuration - `npx jest --init`
-* Install [jsDOM library](https://testing-library.com/docs/react-testing-library/setup#jest-28) - `npm install --save-dev jest-environment-jsdom`
+* Configurations
+
+  1. Install [React testing library](https://testing-library.com/docs/react-testing-library/intro/) - `npm install -D @testing/react`
+  2. Install [Jest](https://jestjs.io/docs/getting-started) - `npm i -D jest`
+  3. Install Babel dependencies - `npm install --save-dev babel-jest @babel/core @babel/preset-env`
+  4. Configure babel.config.js
+  5. Configure [parcel config file to disable default babel transpilation](https://parceljs.org/languages/javascript/#usage-with-other-tools)
+  6. Jest configuration - `npx jest --init`
+  7. Install [jsDOM library](https://testing-library.com/docs/react-testing-library/setup#jest-28) - `npm install --save-dev jest-environment-jsdom`
+
+* **Dunder** notation - two underscores prefix and suffix of a word, usually used to name a testcase folder. eg. **__tests__**
+
