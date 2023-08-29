@@ -424,9 +424,8 @@ But you also need to display it on the cart, i.e. get data or _read_ data from t
   7. Install [jsDOM library](https://testing-library.com/docs/react-testing-library/setup#jest-28) - `npm install --save-dev jest-environment-jsdom`
   8. `npm i @babel/preset-react` - to make JSX work in test cases
   9. Include @babel/preset-react inside babel config
-  10. Install @testing-library/jest-dom
+  10. `npm install -D @testing-library/jest-dom`
 
 * **Dunder** notation - two underscores prefix and suffix of a word, usually used to name a testcase folder. eg. __ tests __
 * A testcase file can be named as _.test.js_ or _.spec.js_ extension
-* 
 
