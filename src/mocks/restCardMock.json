@@ -1,0 +1,97 @@
+{
+    "type": "restaurant",
+    "data": {
+        "type": "F",
+        "id": "683064",
+        "name": "Pizza Hut",
+        "uuid": "dad77c54-1e45-40f6-8fd0-c865c353cb2a",
+        "city": "5",
+        "area": "Mahalaxmi Malabar Hill",
+        "totalRatingsString": "100+ ratings",
+        "cloudinaryImageId": "2b4f62d606d1b2bfba9ba9e5386fabb7",
+        "cuisines": [
+            "Pizzas"
+        ],
+        "tags": [],
+        "costForTwo": 35000,
+        "costForTwoString": "₹350 FOR TWO",
+        "deliveryTime": 35,
+        "minDeliveryTime": 35,
+        "maxDeliveryTime": 35,
+        "slaString": "35 MINS",
+        "lastMileTravel": 1,
+        "slugs": {
+            "restaurant": "pizza-hut-saat-rasta-circle-mahalaxmi-malabar-hill",
+            "city": "mumbai"
+        },
+        "cityState": "5",
+        "address": "Round Building, Bellagio Tower Shop no.3,6,7,8,9,14 Ground, Saat Rasta Circle, Mahalakshmi, Mumbai, Maharashtra 400034",
+        "locality": "Saat Rasta Circle",
+        "parentId": 721,
+        "unserviceable": false,
+        "veg": false,
+        "select": false,
+        "favorite": false,
+        "tradeCampaignHeaders": [],
+        "chain": [],
+        "feeDetails": {
+            "fees": [
+                {
+                    "name": "distance",
+                    "fee": 3000,
+                    "message": ""
+                },
+                {
+                    "name": "time",
+                    "fee": 0,
+                    "message": ""
+                },
+                {
+                    "name": "special",
+                    "fee": 0,
+                    "message": ""
+                }
+            ],
+            "totalFees": 3000,
+            "message": "",
+            "title": "Delivery Charge",
+            "amount": "3000",
+            "icon": ""
+        },
+        "availability": {
+            "opened": true,
+            "nextOpenMessage": "",
+            "nextCloseMessage": ""
+        },
+        "longDistanceEnabled": 0,
+        "rainMode": "NONE",
+        "thirdPartyAddress": false,
+        "thirdPartyVendor": "",
+        "adTrackingID": "",
+        "badges": {
+            "imageBased": [],
+            "textBased": [],
+            "textExtendedBadges": []
+        },
+        "lastMileTravelString": "1 kms",
+        "hasSurge": false,
+        "sla": {
+            "restaurantId": "683064",
+            "deliveryTime": 35,
+            "minDeliveryTime": 35,
+            "maxDeliveryTime": 35,
+            "lastMileTravel": 1,
+            "lastMileDistance": 0,
+            "serviceability": "SERVICEABLE",
+            "rainMode": "NONE",
+            "longDistance": "NOT_LONG_DISTANCE",
+            "preferentialService": false,
+            "iconType": "EMPTY"
+        },
+        "promoted": false,
+        "avgRating": "3.5",
+        "totalRatings": 100,
+        "new": false
+    },
+    "subtype": "basic"
+}
