@@ -77,6 +77,7 @@ const Body = () => {
         <div className="search">
           <input
             type="text"
+            data-testid="searchInput"
             className="h-8 w-80 p-4 border border-solid shadow-md rounded-lg"
             value={searchText}
             onChange={(e) => {
@@ -85,6 +86,7 @@ const Body = () => {
             placeholder="Search your favourite restaurant ..."
           />
           <button
+            data-testid="searchBtn"
             className="p-4 m-1"
             onClick={() => {
               //Filter rest cards update the ui
@@ -113,15 +115,16 @@ const Body = () => {
         </div>
         <div className="filter m-4 p-4 flex items-center">
           <button
-            className="px-4 py-2 font-light text-sm"
+            className="px-4 py-2 font-light text-sm bg-gray-100"
             onClick={() => {
               const filteredRestaurantList = restaurantList.filter(
                 (rest) => rest.data.avgRating > 4
               );
-              setRestaurantList(filteredRestaurantList);
+              console.log(filteredRestaurantList)
+              setFilteredRestaurant(filteredRestaurantList);
             }}
           >
-            Top Rated Restaurant
+            Top Rated Restaurants
           </button>
         </div>
       </div>

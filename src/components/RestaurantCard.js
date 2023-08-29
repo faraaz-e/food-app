@@ -11,10 +11,12 @@ const RestaurantCard = (props) => {
     costForTwo,
     deliveryTime,
   } = restData?.data; // destructuring and Optional chaining
-  
 
   return (
-    <div className="m-4 p-4 w-[290px] h-80 items-center hover:border hover:border-solid hover:border-gray-300 hover:shadow-lg">
+    <div
+      data-testid="restCard"
+      className="m-4 p-4 w-[290px] h-80 items-center hover:border hover:border-solid hover:border-gray-300 hover:shadow-lg"
+    >
       <img
         className="rounded-lg"
         src={CDN_URL + cloudinaryImageId}
@@ -46,11 +48,13 @@ export const withPromotedLabel = (RestaurantCard) => {
   return (props) => {
     return (
       <div>
-        <label className="absolute bg-gray-800 text-white m-5 p-1.5 rounded-sm text-xs font-medium">PROMOTED</label>
+        <label className="absolute bg-gray-800 text-white m-5 p-1.5 rounded-sm text-xs font-medium">
+          PROMOTED
+        </label>
         <RestaurantCard {...props} />
       </div>
-    )
-  }
-}
+    );
+  };
+};
 
 export default RestaurantCard;
