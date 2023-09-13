@@ -1,0 +1,2 @@
+!function(){var e=("undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:"undefined"!=typeof window?window:"undefined"!=typeof global?global:{}).parcelRequire11e5;e.register("7ndU9",function(n,o){Object.defineProperty(n.exports,"__esModule",{value:!0,configurable:!0}),Object.defineProperty(n.exports,"default",{get:function(){return i},set:void 0,enumerable:!0,configurable:!0});var r=e("6tQTC"),i=function(){return(0,r.jsx)("div",{children:"Grocery Page"})}})}();
+//# sourceMappingURL=Grocery.38684085.js.map
