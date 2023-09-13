@@ -1,5 +1,8 @@
 # food-app
 
+Live demo: https://faraaz-e.github.io/food-app/
+
+_Disclaimer: This app is for educational purpose only._
 
 ### Ep - 01 : Inception
 ---
