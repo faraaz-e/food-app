@@ -57,8 +57,8 @@ _Disclaimer: This app is for educational purpose only._
 * Adding scripts to _package.json_ to avoid using `npx parcel index.html` to start the server.
   ```JSON
   "scripts": {
-    "start": "parcel index.html", /** to start the server (localhost:1234) */
-    "build": "parcel build index.html", /** production build of project */
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
     ...
   },
   ```
